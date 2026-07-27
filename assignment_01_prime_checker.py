@@ -35,3 +35,34 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# Dcit104 — Assignment 1
+#
+# TASK: Prime Number Checker
+
+def is_prime(n):
+    """
+    Returns True if n is a prime number, False otherwise.
+    """
+    # Numbers less than 2 are not prime
+    if n < 2:
+        return False
+
+    # Check for divisors from 2 up to the square root of n
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+
+    return True
+
+
+def main():
+    number = int(input("Enter a number: "))
+
+    if is_prime(number):
+        print(f"{number} is a prime number.")
+    else:
+        print(f"{number} is NOT a prime number.")
+
+
+if __name__ == "__main__":
+    main()
