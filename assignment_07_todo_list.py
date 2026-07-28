@@ -79,3 +79,79 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def display_menu():
+    """Prints the application menu options."""
+    print("\n============================")
+    print("      TO-DO LIST MENU")
+    print("============================")
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Delete task")
+    print("4. Quit")
+
+
+def add_task(tasks):
+    """Prompts the user for a task and appends it to the list."""
+    task = input("Enter task: ").strip()
+    if task:
+        tasks.append(task)
+        print(f'Task added: "{task}"')
+    else:
+        print("Task description cannot be empty.")
+
+
+def view_tasks(tasks):
+    """Displays all current tasks with 1-based indexing."""
+    if not tasks:
+        print("Your to-do list is currently empty!")
+        return False
+    
+    print("\nYour Tasks:")
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. {task}")
+    return True
+
+
+def delete_task(tasks):
+    """Displays tasks, prompts for a number, and removes the selected task."""
+    # First, display the tasks. If the list is empty, exit early.
+    has_tasks = view_tasks(tasks)
+    if not has_tasks:
+        return
+
+    try:
+        choice = int(input("Enter task number to delete: "))
+        # Convert 1-based user input to 0-based index
+        if 1 <= choice <= len(tasks):
+            removed = tasks.pop(choice - 1)
+            print(f'Task "{removed}" has been removed.')
+        else:
+            print("Invalid task number. Please try again.")
+    except ValueError:
+        print("Please enter a valid numeric task number.")
+
+
+def main():
+    """Main program loop controlling execution flow."""
+    todo_list = []
+    
+    while True:
+        display_menu()
+        choice = input("Enter your choice (1-4): ").strip()
+        
+        if choice == "1":
+            add_task(todo_list)
+        elif choice == "2":
+            view_tasks(todo_list)
+        elif choice == "3":
+            delete_task(todo_list)
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice! Please enter a number between 1 and 4.")
+
+
+# This ensures the script runs when executed directly
+if __name__ == "__main__":
+    main()
