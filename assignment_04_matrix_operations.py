@@ -60,3 +60,39 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def print_matrix(matrix):
+    for row in matrix:
+        print(" ".join(f"{num:>5}" for num in row))
+        print()  # Add an empty line after the matrix for better readability
+def transpose_matrix(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    transposed = [[0] * rows for _ in range(cols)]
+    for i in range(rows):
+        for j in range(cols):
+            transposed[j][i] = matrix[i][j]
+    return transposed
+def add_matrices (matrixA, matrixB):
+    rows = len(matrixA)
+    cols = len(matrixA[0])
+    result = [[0] * cols for _ in range(rows)]
+    for i in range(rows):
+        for j in range (cols):
+            result[i][j]=matrixA[i][j] + matrixB[i][j]
+    return result
+def multiply_matrices(matrixA, matrixB):
+    rowsA = len(matrixA)
+    colsA = len(matrixA[0])
+    colsB = len(matrixB[0])
+    
+result = [[0] * colsB for _ in range(rowsA)]
+for i in range(rows_A):
+     for j in range(cols_B):
+         for k in range(cols_A):
+             result[i][j] += matrix[i][j]
+
+
+    # Inside the input function:
+row_input    = input("Enter row: ")
+row = [int(x) for x in row_input.split()]
+matrix.append(row)  
