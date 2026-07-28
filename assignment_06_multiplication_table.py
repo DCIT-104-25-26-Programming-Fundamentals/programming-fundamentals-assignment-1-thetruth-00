@@ -55,3 +55,42 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def print_single_table(num):
+    """Generates a multiplication table for a single number from 1 to 12."""
+    print(f"\nMultiplication Table for {num}:")
+    for i in range(1, 13):
+        # Using f-strings to match the expected spacing format
+        print(f"  {num}  x  {i:<2} =  {num * i}")
+
+def print_multiple_tables(n):
+    """Generates multiplication tables for every number from 1 to N."""
+    for current_num in range(1, n + 1):
+        print_single_table(current_num)
+        
+        if current_num < n:
+            print("  ---------------------------")
+
+def main():
+    print("--- PART A: Single Table ---")
+    try:
+        user_num = int(input("Enter a number for the multiplication table: "))
+        if user_num <= 0:
+            print("Error: Please enter a positive integer.")
+            return
+        print_single_table(user_num)
+    except ValueError:
+        print("Error: Invalid input. Please enter a whole number.")
+        return
+
+    print("\n--- PART B: Tables from 1 to N ---")
+    try:
+        n_val = int(input("Enter a number N for tables 1 through N: "))
+        if n_val <= 0:
+            print("Error: Please enter a positive integer.")
+            return
+        print_multiple_tables(n_val)
+    except ValueError:
+        print("Error: Invalid input. Please enter a whole number.")
+
+if __name__ == "__main__":
+    main()
